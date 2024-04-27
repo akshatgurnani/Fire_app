@@ -12,6 +12,9 @@ import numpy as np
 from geo import get_current_gps_coordinates
 import requests as rq
 
+import warnings
+warnings.filterwarnings('ignore')
+
 
 app = Flask(__name__)
 
@@ -122,7 +125,7 @@ def upload():
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(debug=False)
 
 
 
