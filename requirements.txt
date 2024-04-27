@@ -3,3 +3,4 @@ tensorflow-cpu
 flask
 yagmail
 numpy
+pillow
