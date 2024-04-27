@@ -1,0 +1,5 @@
+opencv-python
+tensorflow-cpu
+flask
+yagmail
+numpy
