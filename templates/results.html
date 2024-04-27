@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fire Detection Results</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <!-- navbar start-->
+    <div class="main">
+        <div class="section1">
+            <div class="header">
+                <a href="youtube"><div class="logo">FlameNet</div></a>
+                <div class="nav-btn">
+                    <ul>
+                        <li><a href="{{ url_for('index') }}">Home</a></li>
+                        <li><a href="{{ url_for('Login') }}">Login</a></li>
+                        <li><a href="{{ url_for('about') }}">Contact Us</a></li>
+                        <!-- <li><a href="#"><span class="acc">Account</span></a></li> -->
+                    </ul>    
+                </div>
+            </div>
+    <h3>Fire Detection Results: <p class="resultfont">{{ results }}</p></h3>
+
+    <script>
+        {% if results == "Fire Detected" %}
+            var alarmSound = new Audio('/static/alarm_sound.mp3'); // Change path to your alarm sound file
+            alarmSound.play();
+        {% endif %}
+    </script>
+    
+</body>
+</html>

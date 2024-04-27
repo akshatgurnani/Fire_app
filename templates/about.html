@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script src="contact.js"></script>
+    <title>FlameNet</title>
+</head>
+<body>
+    <!-- navbar start-->
+    <div class="main">
+        <div class="section1">
+            <div class="header">
+                <a href="youtube"><div class="logo">FlameNet</div></a>
+                <div class="nav-btn">
+                    <ul>
+                        <li><a href="{{ url_for('index') }}">Home</a></li>
+                        <li><a href="{{ url_for('Login') }}">Login</a></li>
+                        <li><a href="{{ url_for('about') }}">Contact Us</a></li>
+                        <!-- <li><a href="#"><span class="acc">Account</span></a></li> -->
+                    </ul>    
+                </div>
+            </div>
+        <!-- navbar end -->
+
+        <!-- login page -->
+        <div class="contact-page">
+            <div class="form">
+                <form class="contact-form " action="">
+                    <h2 class="signin">Contact Form </h2>
+                    <input type="text" required placeholder="Name" id="name" autocomplete="off" />
+                    <input type="email" name="email"required placeholder="example@gmail.com" id="email">
+                    <textarea name="msg" id="msg" cols="39" rows="6" placeholder="Type your Message"></textarea>
+                    <!-- <input oninput="return formvalid()" type="password" required placeholder="Password" id="pass" autocomplete="off" /> -->
+
+                    <img src="" onclick="show()" id="showimg">
+                    <span id="vaild-pass"></span>
+                    <button type="submit">Submit</button>
+                    <!-- <p class="message"><a href="#">Forgot your password?</a></p> --> 
+                
+                </form>
+                
+            </div>
+        </div>
+        <!-- login end  -->
+
+
+        <!-- Footer Starts -->
+        <footer>
+            <div class="content">
+              <div class="top">
+                <!-- <div class="flogo">
+                  <p class="flogo_name">FlameNet</p>
+                </div> -->
+                <!-- <div class="media-icons">
+                  <a target="on_blank" href="#"><i class="fab fa-facebook"></i></a>
+                  <a target="on_blank" href="https://www.instagram.com/pico_india/"><i class="fab fa-instagram"></i></a>
+                </div> -->
+              </div>
+              <div class="link-boxes">
+                <ul class="box">
+                  <li class="link_name">Links</li>
+                  <li><a href="#">Home</a></li>
+                  <li><a href="#">About Us</a></li>
+                  <li><a href="#">Upload Photo</a></li>
+        
+                </ul>
+                <ul class="box">
+                  <li class="link_name">Recommended</li>
+                  <li><a href="#">India</a></li>
+                  <li><a href="#">Art and Culture</a></li>
+                  <li><a href="#">People</a></li>
+                  <li><a href="#">Travel</a></li>
+        
+                </ul>
+                <ul class="box">
+                  <li class="link_name">Legal Info</li>
+                  <li><a href="#">Licence</a></li>
+                  <li><a href="#">Terms and Conditions</a></li>
+                  <li><a href="#">Privacy Policies</a></li>
+        
+                </ul>
+                <ul class="box">
+                  <li class="link_name">Contact</li>
+                  <li><a target="on_blank" href="tel:+916354592170">+91 6354592170</a></li>
+                  <li><a target="on_blank" href="mailto:'priyankachovatiya10@gmail.com'">priyankachovatiya10@gmail.com</a></li>
+                </ul>
+              </div>
+            </div>
+        
+            <div class="bottom-details">
+              <div class="bottom_text">
+                <span class="copyright_text">Copyright © 2024 <a href="#">FlameNet.</a></span>
+              </div>
+            </div>
+          </footer>
+        
+    </div> 
+</div>
+</body>
+</html>

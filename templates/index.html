@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>FlameNet</title>
+</head>
+<body>
+    <div class="main">
+        <div class="section1">
+            <div class="header">
+                <a href="{{url_for('index')}}"><div class="logo">FlameNet</div></a>
+                <div class="nav-btn">
+                    <ul>
+                        <li><a href="{{ url_for('index') }}">Home</a></li>
+                        <li><a href="{{ url_for('video_feed') }}">Video Feed</a></li>
+                        <li><a href="{{ url_for('about') }}">Contact Us</a></li>  
+                        
+
+                        
+                        <!-- <li><a href="#"><span class="acc">Account</span></a></li> -->
+                    </ul>
+                </div>
+            </div>
+            <!-- <div class="hero-main"> -->
+                <div class="hero-contents">
+
+                <div class="hero-img">
+                    <p class="brandName">FlameNet!</p>
+                </div>
+                <div class="hero-text"><p>The Flamenet System is a state-of-the-art fire detection solution. It begins by capturing images or video frames, which are then processed using advanced techniques.These processed images are analyzed by a sophisticated Convolutional Neural Network (CNN) model to detect any signs of fire. In the event of a fire detection, the system triggers an alert alarm and sends an SMS or message to the designated authorities. Additionally, it provides real-time alerts via Gmail, ensuring you are always informed and prepared for any fire hazards. This system is designed with precision and efficiency, prioritizing your safety above all.</p></div>
+                
+                <a href="{{ url_for('Login') }}" class="hero-img-btn">Let's start!</a>
+                </div>
+            <!-- </div> -->
+         </div>
+         <div class="section2">
+         </div>
+    </div>
+</body>
+</html>

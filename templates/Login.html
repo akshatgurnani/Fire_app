@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    
+    <title>FlameNet</title>
+</head>
+<body>
+    <!-- navbar start-->
+    <div class="main">
+        <div class="section1">
+            <div class="header">
+                <a href="{{url_for('index')}}"><div class="logo">FlameNet</div></a>
+                <div class="nav-btn">
+                    <ul>
+                        <li><a href="{{ url_for('index') }}">Home</a></li>
+                        <li><a href="{{ url_for('video_feed') }}">Video Feed</a></li>
+                        <li><a href="{{ url_for('about') }}">Contact Us</a></li>
+                        <!-- <li><a href="#"><span class="acc">Account</span></a></li> -->
+                    </ul>    
+                </div>
+            </div>
+        <!-- navbar end -->
+        
+                <!-- login page -->
+                <div class="login-page">
+                    <div class="form">
+                        <form class="login-form " action="{{ url_for('Actions') }}" target="">
+                            <h2 class="signin">LOGIN IN ACCOUNT </h2>
+                            <input type="text" required placeholder="Username" id="user" autocomplete="off" />
+                            <input oninput="return formvalid()" type="password" required placeholder="Password" id="pass" autocomplete="off" />
+                            <img src="" onclick="show()" id="showimg">
+                            <span id="vaild-pass"></span>
+                            <button type="submit">LOGIN</button>
+                            <p class="message"><a href="#">Forgot your password?</a></p>
+                        </form>
+                    </div>
+                </div>
+                <!-- login end  -->
+
+
+        </div> 
+    </div>
+    <script src="{{ url_for('static', filename='login.js') }}"></script>
+</body>
+</html>
