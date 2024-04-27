@@ -4,3 +4,4 @@ flask
 yagmail
 numpy
 pillow
+Werkzeug
