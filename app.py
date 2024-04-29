@@ -1,19 +1,18 @@
-
-from flask import Flask, render_template, request, Response
+import os
+from flask import Flask, render_template, request ,Response
+import cv2
 from werkzeug.utils import secure_filename
 import numpy as np
 import tensorflow as tf
-import cv2
-import keras.utils as image
-import yagmail
+# from tensorflow import keras
+# from keras.applications.resnet import ResNet50 
 from PIL import Image
-import numpy as np
-
+import keras.utils as image
+from keras.applications.resnet import preprocess_input, decode_predictions 
+import yagmail
 from geo import get_current_gps_coordinates
 import requests as rq
-
-import warnings
-warnings.filterwarnings('ignore')
+# import io
 
 
 app = Flask(__name__)
@@ -45,6 +44,39 @@ def gen_frames(camera, model):
             if prediction == 0:
                 text = 'Fire Detected'
                 cv2.putText(frame, text, (50, 50), font, 1, (0, 0, 255), 2, cv2.LINE_4)
+                
+                # Saving the frame as an image temporarily
+                img_path = 'detected_fire.jpg'
+                cv2.imwrite(img_path, frame)
+                
+                # Sending email
+                user = 'priyankachovatiya10@gmail.com'
+                app_password = 'btys zkcw jzpt kdhz'
+                to = 'priyankamrjp@gmail.com'
+                subject = 'Fire Detection System Alert!'
+                contents = ['Fire detected', 'Urgent action required']
+                attachments = [img_path]
+                with yagmail.SMTP(user, app_password) as yag:
+                    yag.send(to, subject, contents,attachments=attachments)
+                    print('Sent email successfully')
+                    
+                #sending sms
+                url = "https://www.fast2sms.com/dev/bulkV2"
+                coordinates = get_current_gps_coordinates()
+                if coordinates is not None:
+                    latitude, longitude = coordinates
+                    detect_msg = "Fire Detected\nLatitude is: " + str(latitude) + ", Longitude is: " + str(longitude)
+                    querystring = {
+                        "authorization": "CTMLMlIASVae6kYcaJkMfcvdkYrSyE16KP8TBEMx1NZkHzeQErt9sH78U4mX",
+                        "message": [detect_msg],
+                        "language": "english",
+                        "route": "q",
+                        "numbers": "9066436692"
+                    }
+                    headers = {'cache-control': "no-cache"}
+                    response = rq.request("GET", url, headers=headers, params=querystring)
+                    print(response.text)
+                
             else:
                 text = 'Fire Not Detected'
                 cv2.putText(frame, text, (50, 50), font, 1, (255, 255, 0), 2, cv2.LINE_4)
@@ -54,9 +86,8 @@ def gen_frames(camera, model):
             frame = buffer.tobytes()
             yield (b'--frame\r\n'
                    b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n')
-
-
-
+            
+    
 @app.route("/")
 def index():
     return render_template("index.html")
@@ -71,7 +102,7 @@ def about():
 
 @app.route("/Actions")
 def Actions():
-    return render_template("temp.html")
+    return render_template("Actions.html")
 
 @app.route("/video_feed")
 def video_feed():
@@ -125,7 +156,7 @@ def upload():
 
 
 if __name__ == "__main__":
-    app.run(debug=False)
+    app.run(debug=True)
 
 
 
